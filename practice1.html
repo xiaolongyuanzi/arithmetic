@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>递归生成树形菜单</title>
+    <style>
+        div{margin: 10px 20px;}
+        ul li{list-style: none}
+    </style>
+</head>
+<body>
+<div>输出一个树形分级菜单：递归算法实现</div>
+<div>
+    <ul class="Dtree"></ul>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    $(function(){
+
+//    growTree();
+
+        growTree();
+        function growTree(){
+                var data =[
+                    {"id":"53","name":"测试","pid":"0"},
+                    {"id":"54","name":"dfgnkdlngks","pid":"53"},
+                    {"id":"55","name":"通用类","pid":"0"},
+                    {"id":"56","name":"设计通用","pid":"55"},
+                    {"id":"57","name":"技术类","pid":"0"},
+                    {"id":"58","name":"html","pid":"57"},
+                    {"id":"59","name":"JavaScript","pid":"57"},
+                    {"id":"60","name":"测试类","pid":"0"},
+                    {"id":"61","name":"测试1","pid":"60"},
+                    {"id":"62","name":"测试2","pid":"60"},
+                    {"id":"63","name":"测试三级","pid":"62"},
+                    {"id":"64","name":"jquery","pid":"59"},
+                    {"id":"65","name":"原画","pid":"56"},
+                    {"id":"66","name":"测试一下","pid":"54"},
+                    {"id":"67","name":"啦啦啦","pid":"54"},
+                    {"id":"68","name":"测试类2","pid":"0"},
+                    {"id":"69","name":"测时间","pid":"68"}
+                ];
+            var listStr = '';
+            listStr += firstList(data);
+            if(listStr != ''){
+                $(".Dtree").append(listStr);
+            }
+        }
+        function firstList(data,id,pid){
+            var str = '';
+            for(var i in data){
+                if(data[i].pid == 0){
+                    str += '<li class="first"><span data-id="'+data[i].id+'" data-pid="'+data[i].pid+'">'+ data[i].name+'</span>'
+                    +'<ul>'+secondList(data,data[i].id,data[i].pid)+'</ul>'
+                    +'</li>'
+                }
+            }
+            return str;
+        }
+        function secondList(data,id,pid){
+            var str = '';
+            for(var i in data){
+                if(data[i].pid == id && pid ==0){
+                    str += '<li class="second"><span data-id="'+data[i].id+'" data-pid="'+data[i].pid+'">'+ data[i].name+'</span>'
+                    +'<ul>'+thirdList(data,data[i].id,data[i].pid)+'</ul>'
+                    +'</li>'
+                }
+            }
+            return str;
+        }
+        function thirdList(data,id,pid){
+            var str = '';
+            for(var i in data){
+                if(data[i].pid == id && pid != 0){
+                    str += '<li class="second"><span data-id="'+data[i].id+'" data-pid="'+data[i].pid+'">'+ data[i].name+'</span></li>'
+                }
+            }
+            return str;
+        }
+    });
+
+</script>

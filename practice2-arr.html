@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>数组算法--数组去重</title>
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+</head>
+<body>
+    <h4>数组：[2,1,'1',4,3,5,5,6,7,7,8,9,9]</h4>
+    <p>严格等于(===)和相等(==)所得到的的结果是不一样的</p>
+
+    <h5>数组去重：方法1</h5>
+    <div class="result1">
+    </div>
+
+    <h5>数组去重：方法2 （采用严格等于 "==="）</h5>
+    <div class="result2">
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+    //方法1
+var arr = [2,1,'1',4,3,5,5,6,7,7,8,9,9];
+    moveRepeat1(arr);
+    moveRepeat2(arr);
+    function moveRepeat1(e){
+        var result = [];
+        for(var i =0;i<e.length;i++){
+            var cell = e[i];
+            for(var j in result){
+                if(result[j] == cell){
+//                    alert('重复的元素为'+cell);
+                    result.pop();
+//                    cell = '';
+                }
+            }
+            result.push(cell);
+//            console.log(result)
+        }
+//        console.log(result);
+        $(".result1").text(result);
+    }
+    function moveRepeat2(b) {
+        if(b.length == 0) return;
+        var result = [b[0]], isRepeate;
+        for( var i = 0, j = b.length; i < j; i++ ){
+            isRepeate = false;
+            for( var k = 0, h = result.length; k < h; k++){
+                if(result[k] === b[i]){
+                    isRepeate = true;
+                    break;
+                }
+                if(k == h) break;
+            }
+            if( !isRepeate ) result.push(b[i]);
+        }
+        return result;
+        console.log(result)
+        $(".result2").text(result);
+    }
+
+    $(".result2").text(parseFloat(5))
+
+});
+
+
+</script>
