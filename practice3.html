@@ -19,23 +19,23 @@
             n = array.length,
             i;
         // 如果还剩有元素则继续。。。
-//        while (n) { // 随机抽取一个元素
-//            i = Math.floor(Math.random() * array.length); // 如果这个元素之前没有被选中过。。
-//            if (i in array) { //使用in运算符判断i是否在数组中
-//                copy.push(array[i]);
-//                delete array[i];
-//                n--;
-//                console.log(i);
-//                console.log(copy)
-//            }
-//        }
-        i = Math.floor(Math.random() * array.length);
-        for(var i in array){
-            if(i == array[i]){
-                copy.push(array[i])
+        while (n) { // 随机抽取一个元素
+            i = Math.floor(Math.random() * array.length); // 如果这个元素之前没有被选中过。。
+            if (i in array) { //使用in运算符判断i是否在数组中
+                copy.push(array[i]);
+                delete array[i];
+                n--;
+                console.log(i);
+                console.log(copy)
             }
         }
-        return copy;
+//        i = Math.floor(Math.random() * array.length);
+//        for(var i in array){
+//            if(i == array[i]){
+//                copy.push(array[i])
+//            }
+//        }
+//        return copy;
     }
     $(".arrQuery").text(shuffle(arr));
 
