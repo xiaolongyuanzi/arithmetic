@@ -11,9 +11,11 @@
 </html>
 <script type="text/javascript" src="./js/jquery-1.11.3.js"></script>
 <script type="text/javascript">
-    var arr = [1,2,3,4,5,6,7,8,9]
+    var arr = [1,2,3,4,5,6,7,8,9];
     //每次随机抽一个数，然后移动到新数组中
-    //主要是怎样去随机不重复的取出数据。新创建一个数组存放取出来的数据。如何对比随机取出的数据是否重复？随机数等于数组元素
+    //主要是怎样去随机不重复的取出数据。新创建一个数组存放取出来的数据。
+    // 如何对比随机取出的数据是否重复？随机数等于数组元素
+    // 方法1：
     function shuffle(array) {
         var copy = [],
             n = array.length,
@@ -25,18 +27,14 @@
                 copy.push(array[i]);
                 delete array[i];
                 n--;
-                console.log(i);
-                console.log(copy)
             }
         }
-//        i = Math.floor(Math.random() * array.length);
-//        for(var i in array){
-//            if(i == array[i]){
-//                copy.push(array[i])
-//            }
-//        }
-//        return copy;
+        $(".arrQuery").text(copy);
     }
-    $(".arrQuery").text(shuffle(arr));
+    shuffle(arr);
 
+    // 方法2、
+    function disorder(array){
+
+    }
 </script>

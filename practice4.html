@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>数组算法-数组判断</title>
+</head>
+<body>
+  <h4>判断对象是否是数组：arr = [],notArr = 1</h4>
+    <div class="result">
+      <span>Array.isArray 结果1：<span id="result1"></span>  </span>
+      <span>结果2：<span id="result2"></span>  </span>
+      <span>结果3：<span id="result3"></span>  </span>
+      <span>结果4：<span id="result4"></span>  </span>
+      <span>结果5：<span id="result5"></span>  </span>
+    </div>
+</body>
+<script type="text/javascript" src="./js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+  var arr = [],
+      notArr = 1;
+      $("#result1").html(Array.isArray(arr));
+      $("#result2").html(Array.isArray(notArr));
+      $("#result3").html(arr instanceof Array);
+      $("#result3").html(Object.prototype.toString.call(arr) === '[object Array]')
+      console.log(Array.isArray(notArr));
+</script>
+</html>
